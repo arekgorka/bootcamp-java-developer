@@ -45,6 +45,6 @@ public class CollectionTestSuite {
         List<Integer> fullList = oddNumbersExterminator.exterminate(numbers);
         System.out.println("Check if the list is full...");
         //Then
-        Assertions.assertNotEquals(10, fullList.size());
+        Assertions.assertEquals(5, fullList.size());
     }
 }
