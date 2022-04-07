@@ -1,7 +1,10 @@
 package com.kodilla.testing.collection;
 
-//import com.kodilla.testing.collection.OddNumbersExterminator;
+import com.kodilla.testing.collection.OddNumbersExterminator;
 import org.junit.jupiter.api.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CollectionTestSuite {
 
@@ -34,10 +37,14 @@ public class CollectionTestSuite {
     void testOddNumbersExterminatorNormalList() {
         //Given
         OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();
+        List<Integer> numbers = new ArrayList<>();
+        for(int i=0; i<10; i++) {
+            numbers.add(i);
+        }
         //When
-        int fullList = oddNumbersExterminator.exterminate().size();
+        List<Integer> fullList = oddNumbersExterminator.exterminate(numbers);
         System.out.println("Check if the list is full...");
         //Then
-        Assertions.assertEquals(10, fullList);
+        Assertions.assertEquals(10, fullList.size());
     }
 }
