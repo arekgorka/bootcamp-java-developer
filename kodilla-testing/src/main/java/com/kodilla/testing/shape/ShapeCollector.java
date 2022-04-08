@@ -39,6 +39,7 @@ public class ShapeCollector {
         for( Shape shape: shapes) {
             result += shape.getShapeName();
         }
+        System.out.println(result);
         return result;
     }
 }

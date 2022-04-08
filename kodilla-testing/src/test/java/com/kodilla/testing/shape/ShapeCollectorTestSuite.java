@@ -106,14 +106,14 @@ public class ShapeCollectorTestSuite {
         void testShowFigure() {
             //Given
             ShapeCollector shapeCollector = new ShapeCollector();
-            shapeCollector.addFigure(new Square("Name-Square", "Field 23m2"));
-            shapeCollector.addFigure(new Circle("Name-Circle", "Field 51m2"));
-            shapeCollector.addFigure(new Triangle("Name-Triangle", "Field 40m2"));
+            shapeCollector.addFigure(new Square("Square", "Field 23m2"));
+            shapeCollector.addFigure(new Circle("Circle", "Field 51m2"));
+            shapeCollector.addFigure(new Triangle("Triangle", "Field 40m2"));
             //When
             String actual = shapeCollector.showFigures();
             //Then
-            Assertions.assertEquals("Name-SquareName-CircleName-Triangle", actual);
-        }
+            Assertions.assertEquals("SquareCircleTriangle", actual);
+        }                           //actual:SquareCircleTriangle
 
     }
 }
