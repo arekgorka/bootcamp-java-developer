@@ -20,7 +20,7 @@ public class ShapeCollector {
     }
 
     public void removeFigure(Shape shape) {
-        shapes.remove(0);
+        shapes.remove(shape);
         /*if (shapes.contains(shape)) {
           shapes.remove(shape);
         }*/
