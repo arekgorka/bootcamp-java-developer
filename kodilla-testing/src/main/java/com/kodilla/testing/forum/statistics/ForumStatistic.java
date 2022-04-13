@@ -8,10 +8,9 @@ public class ForumStatistic {
     private double meanPostsPerUser;
     private double meanCommentsPerUser;
     private double meanCommentsPerPost;
-    private Statistics statistics;
 
-    public ForumStatistic(Statistics statistics) {
-        this.statistics = statistics;
+    public ForumStatistic() {
+
     }
 
 

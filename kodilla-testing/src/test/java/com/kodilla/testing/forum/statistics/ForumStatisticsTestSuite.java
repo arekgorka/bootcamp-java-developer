@@ -25,24 +25,6 @@ public class ForumStatisticsTestSuite {
         return resultList;
     }
 
-    private List<Post> generateListOfNPost(int postsQuantity) {
-        List<Post> resultList = new ArrayList<>();
-        for(int n = 1; n <= postsQuantity; n++) {
-            Post thePost = new Post("Post" + n);
-            resultList.add(thePost);
-        }
-        return resultList;
-    }
-
-    private List<Comment> generateListOfNComments(int commentsQuantity) {
-        List<Comment> resultList = new ArrayList<>();
-        for(int n = 1; n <= commentsQuantity; n++) {
-            Comment theComment = new Comment("Comment" + n);
-            resultList.add(theComment);
-        }
-        return resultList;
-    }
-
     @Mock
     private Statistics statisticsMock;
 
@@ -50,13 +32,11 @@ public class ForumStatisticsTestSuite {
     @Test
     void amountOfPostsIs0() {
         //Given
-        ForumStatistic forumStatistic = new ForumStatistic(statisticsMock);
-        List<Post> listWith0Posts = new ArrayList<>();
+        ForumStatistic forumStatistic = new ForumStatistic();
         List<String> listUser = generateListOfNUser(50);
-        List<Comment> listComment = generateListOfNComments(160);
-        when(statisticsMock.postsCount()).thenReturn(listWith0Posts.size());
+        when(statisticsMock.postsCount()).thenReturn(0);
         when(statisticsMock.usersNames()).thenReturn(listUser);
-        when(statisticsMock.commentsCount()).thenReturn(listComment.size());
+        when(statisticsMock.commentsCount()).thenReturn(160);
 
         //when
         forumStatistic.calculateAdvStatistics(statisticsMock);
@@ -74,13 +54,11 @@ public class ForumStatisticsTestSuite {
     @Test
     void amountOfPostsIs1000() {
         //Given
-        ForumStatistic forumStatistic = new ForumStatistic(statisticsMock);
-        List<Post> listWith1000Posts = generateListOfNPost(1000);
+        ForumStatistic forumStatistic = new ForumStatistic();
         List<String> listUser = generateListOfNUser(20);
-        List<Comment> listComment = generateListOfNComments(160);
-        when(statisticsMock.postsCount()).thenReturn(listWith1000Posts.size());
+        when(statisticsMock.postsCount()).thenReturn(1000);
         when(statisticsMock.usersNames()).thenReturn(listUser);
-        when(statisticsMock.commentsCount()).thenReturn(listComment.size());
+        when(statisticsMock.commentsCount()).thenReturn(160);
         //when
         forumStatistic.calculateAdvStatistics(statisticsMock);
         double resultMeanPostPerUser = forumStatistic.getMeanPostsPerUser();
@@ -97,13 +75,11 @@ public class ForumStatisticsTestSuite {
     @Test
     void amountOfCommentsIs0() {
         //Given
-        ForumStatistic forumStatistic = new ForumStatistic(statisticsMock);
-        List<Comment> listWith0Comments = new ArrayList<>();
-        List<Post> listPost = generateListOfNPost(70);
+        ForumStatistic forumStatistic = new ForumStatistic();
         List<String> listUser = generateListOfNUser(20);
-        when(statisticsMock.postsCount()).thenReturn(listPost.size());
+        when(statisticsMock.postsCount()).thenReturn(70);
         when(statisticsMock.usersNames()).thenReturn(listUser);
-        when(statisticsMock.commentsCount()).thenReturn(listWith0Comments.size());
+        when(statisticsMock.commentsCount()).thenReturn(0);
         //when
         forumStatistic.calculateAdvStatistics(statisticsMock);
         double resultMeanPostPerUser = forumStatistic.getMeanPostsPerUser();
@@ -120,13 +96,11 @@ public class ForumStatisticsTestSuite {
     @Test
     void amountOfCommentsIsLessThanPosts() {
         //Given
-        ForumStatistic forumStatistic = new ForumStatistic(statisticsMock);
-        List<Post> listPosts = generateListOfNPost(1000);
+        ForumStatistic forumStatistic = new ForumStatistic();
         List<String> listUser = generateListOfNUser(20);
-        List<Comment> listComment = generateListOfNComments(160);
-        when(statisticsMock.postsCount()).thenReturn(listPosts.size());
+        when(statisticsMock.postsCount()).thenReturn(1000);
         when(statisticsMock.usersNames()).thenReturn(listUser);
-        when(statisticsMock.commentsCount()).thenReturn(listComment.size());
+        when(statisticsMock.commentsCount()).thenReturn(160);
         //when
         forumStatistic.calculateAdvStatistics(statisticsMock);
         double resultMeanPostPerUser = forumStatistic.getMeanPostsPerUser();
@@ -143,13 +117,11 @@ public class ForumStatisticsTestSuite {
     @Test
     void amountOfCommentsIsMoreThanPosts() {
         //Given
-        ForumStatistic forumStatistic = new ForumStatistic(statisticsMock);
-        List<Post> listPosts = generateListOfNPost(120);
+        ForumStatistic forumStatistic = new ForumStatistic();
         List<String> listUser = generateListOfNUser(5);
-        List<Comment> listComment = generateListOfNComments(1600);
-        when(statisticsMock.postsCount()).thenReturn(listPosts.size());
+        when(statisticsMock.postsCount()).thenReturn(120);
         when(statisticsMock.usersNames()).thenReturn(listUser);
-        when(statisticsMock.commentsCount()).thenReturn(listComment.size());
+        when(statisticsMock.commentsCount()).thenReturn(1600);
         //when
         forumStatistic.calculateAdvStatistics(statisticsMock);
         double resultMeanPostPerUser = forumStatistic.getMeanPostsPerUser();
@@ -166,13 +138,11 @@ public class ForumStatisticsTestSuite {
     @Test
     void amountOfUsersIs0() {
         //Given
-        ForumStatistic forumStatistic = new ForumStatistic(statisticsMock);
+        ForumStatistic forumStatistic = new ForumStatistic();
         List<String> listWith0User = new ArrayList<>();
-        List<Post> listPosts = generateListOfNPost(120);
-        List<Comment> listComment = generateListOfNComments(150);
-        when(statisticsMock.postsCount()).thenReturn(listPosts.size());
+        when(statisticsMock.postsCount()).thenReturn(120);
         when(statisticsMock.usersNames()).thenReturn(listWith0User);
-        when(statisticsMock.commentsCount()).thenReturn(listComment.size());
+        when(statisticsMock.commentsCount()).thenReturn(150);
         //when
         forumStatistic.calculateAdvStatistics(statisticsMock);
         double resultMeanPostPerUser = forumStatistic.getMeanPostsPerUser();
@@ -189,13 +159,11 @@ public class ForumStatisticsTestSuite {
     @Test
     void amountOfUsersIs100() {
         //Given
-        ForumStatistic forumStatistic = new ForumStatistic(statisticsMock);
-        List<Post> listPosts = generateListOfNPost(120);
+        ForumStatistic forumStatistic = new ForumStatistic();
         List<String> listUser = generateListOfNUser(100);
-        List<Comment> listComment = generateListOfNComments(1500);
-        when(statisticsMock.postsCount()).thenReturn(listPosts.size());
+        when(statisticsMock.postsCount()).thenReturn(120);
         when(statisticsMock.usersNames()).thenReturn(listUser);
-        when(statisticsMock.commentsCount()).thenReturn(listComment.size());
+        when(statisticsMock.commentsCount()).thenReturn(1500);
         //when
         forumStatistic.calculateAdvStatistics(statisticsMock);
         double resultMeanPostPerUser = forumStatistic.getMeanPostsPerUser();
