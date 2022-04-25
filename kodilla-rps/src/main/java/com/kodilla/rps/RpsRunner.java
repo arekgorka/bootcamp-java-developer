@@ -26,22 +26,22 @@ public class RpsRunner {
         while (!end) {
             System.out.println("Twój ruch:");
             String input = scanner.next();
-            if (input.equals("1")) {
+            if ("1".equals(input)) {
                 playerChoice = 1;
                 rpsRunner.playRound();
             }
-            if (input.equals("2")) {
+            if ("2".equals(input)) {
                 playerChoice = 2;
                 rpsRunner.playRound();
             }
-            if (input.equals("3")) {
+            if ("3".equals(input)) {
                 playerChoice = 3;
                 rpsRunner.playRound();
             }
-            if (input.equals("x")) {
+            if ("x".equals(input)) {
                 rpsRunner.endGame();
             }
-            if (input.equals("n")) {
+            if ("n".equals(input)) {
                 rpsRunner.playAgain();
             }
             System.out.println(name + " " + victoryPlayerCounter + " : " + victoryComputerCounter + " Computer");
