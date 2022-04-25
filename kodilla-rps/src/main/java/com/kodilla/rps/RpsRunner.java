@@ -20,10 +20,8 @@ public class RpsRunner {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Podaj imię:");
         name = scanner.nextLine();
-        System.out.println("Cześć " + name + ", do ilu zwycięstw chcesz grać?");
-        amountOfVictories = scanner.nextInt();
-        System.out.println("Ok, gracie do " + amountOfVictories + ". Powodzenia!");
-        rpsRunner.instruction();
+        System.out.println("Cześć " + name + "!");
+        rpsRunner.chooseAmountOfVictories();
 
         while (!end) {
             System.out.println("Twój ruch:");
@@ -50,13 +48,15 @@ public class RpsRunner {
 
             if (victoryPlayerCounter == amountOfVictories ||
                     victoryComputerCounter == amountOfVictories) {
-                end = true;
                 if (victoryPlayerCounter>victoryComputerCounter) {
                     System.out.println("Gratulację, wygrałeś grę!");
+                    System.out.println("Końcowy wynik: " + name + " " + victoryPlayerCounter + " : " + victoryComputerCounter + " Computer");
                 }
                 if (victoryComputerCounter>victoryPlayerCounter) {
                     System.out.println("Niestety przegrałeś... koniec gry!");
+                    System.out.println("Końcowy wynik: " + name + " " + victoryPlayerCounter + " : " + victoryComputerCounter + " Computer");
                 }
+                rpsRunner.endChoice();
             }
         }
     }
@@ -104,6 +104,20 @@ public class RpsRunner {
         }
     }
 
+    public void endChoice() {
+        RpsRunner rpsRunner = new RpsRunner();
+        System.out.println("Naciśnij 'x' aby zakończyć grę. \n" +
+                "Naciśnij 'n' aby zacząć nową grę.");
+        Scanner scanner = new Scanner(System.in);
+        String playAgainOrEndGame = scanner.next();
+        if (playAgainOrEndGame.equals("x")) {
+            end = true;
+        }
+        if (playAgainOrEndGame.equals("n")) {
+            rpsRunner.chooseAmountOfVictories();
+        }
+    }
+
     public void endGame() {
         System.out.println("Czy na pewno chcesz zakończyć grę? \n" +
                 "naciśnij klawisz 't' dla \"tak\" lub 'n' dla \"nie\".");
@@ -126,16 +140,7 @@ public class RpsRunner {
         String yesOrNot = scanner.next();
             if (yesOrNot.equals("t")) {
                 System.out.println("Gramy od nowa!");
-                victoryPlayerCounter = 0;
-                victoryComputerCounter = 0;
-                System.out.println("Do ilu zwycięstw chcesz grać?");
-                amountOfVictories = scanner.nextInt();
-                while (amountOfVictories <= 0) {
-                    System.out.println("Podaj liczbę większą niż 0.");
-                    amountOfVictories = scanner.nextInt();
-                }
-                System.out.println("Ok, gracie do "+ amountOfVictories +". Powodzenia!");
-                rpsRunner.instruction();
+                rpsRunner.chooseAmountOfVictories();
             }
             if (yesOrNot.equals("n")) {
                 System.out.println("Gramy dalej");
@@ -150,5 +155,20 @@ public class RpsRunner {
                 "Klawisz 'x' - zakończenie gry \n" +
                 "Klawisz 'n' - graj od nowa");
         System.out.println("Zaczynamy!");
+    }
+
+    public void chooseAmountOfVictories() {
+        RpsRunner rpsRunner = new RpsRunner();
+        Scanner scanner = new Scanner(System.in);
+        victoryPlayerCounter = 0;
+        victoryComputerCounter = 0;
+        System.out.println("Do ilu zwycięstw chcesz grać?");
+        amountOfVictories = scanner.nextInt();
+        while (amountOfVictories <= 0) {
+            System.out.println("Podaj liczbę większą niż 0.");
+            amountOfVictories = scanner.nextInt();
+        }
+        System.out.println("Ok, gracie do "+ amountOfVictories +". Powodzenia!");
+        rpsRunner.instruction();
     }
 }
