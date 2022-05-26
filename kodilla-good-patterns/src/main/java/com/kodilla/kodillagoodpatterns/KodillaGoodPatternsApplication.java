@@ -1,6 +1,8 @@
 package com.kodilla.kodillagoodpatterns;
 
 import com.kodilla.kodillagoodpatterns.challenges.*;
+import com.kodilla.kodillagoodpatterns.food2door.*;
+import com.kodilla.kodillagoodpatterns.food2door.Order;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -14,6 +16,24 @@ public class KodillaGoodPatternsApplication {
     public static void main(String[] args) {
         SpringApplication.run(KodillaGoodPatternsApplication.class, args);
 
+        ExtraFoodShop extraFoodShop = new ExtraFoodShop(new FoodInformationService());
+        HealthyShop healthyShop = new HealthyShop(new FoodInformationService());
+        GlutenFreeShop glutenFreeShop = new GlutenFreeShop(new FoodInformationService());
+
+        extraFoodShop.processOrder();
+        System.out.println("");
+        healthyShop.processOrder();
+        System.out.println("");
+        glutenFreeShop.processOrder();
+    }
+
+}
+
+/*public class KodillaGoodPatternsApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(KodillaGoodPatternsApplication.class, args);
+
         OrderRetriever orderRetriever = new OrderRetriever();
         Order order = orderRetriever.retrieve();
 
@@ -23,7 +43,7 @@ public class KodillaGoodPatternsApplication {
         productOrderService.process(order);
     }
 
-}
+}*/
 
 
     /*MovieStore movieStore = new MovieStore();
