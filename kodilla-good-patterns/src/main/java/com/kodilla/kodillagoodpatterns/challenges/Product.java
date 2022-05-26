@@ -2,11 +2,19 @@ package com.kodilla.kodillagoodpatterns.challenges;
 
 public class Product {
 
-    String productName;
-    double price;
+    private String productName;
+    private double price;
 
-    public Product(String productName, double price) {
+    public Product(final String productName, final double price) {
         this.productName = productName;
         this.price = price;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public double getPrice() {
+        return price;
     }
 }
