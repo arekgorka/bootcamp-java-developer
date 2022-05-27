@@ -1,19 +1,39 @@
 package com.kodilla.kodillagoodpatterns;
 
 import com.kodilla.kodillagoodpatterns.challenges.*;
+import com.kodilla.kodillagoodpatterns.flightsearchengine.*;
 import com.kodilla.kodillagoodpatterns.food2door.*;
 import com.kodilla.kodillagoodpatterns.food2door.Order;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 @SpringBootApplication
 public class KodillaGoodPatternsApplication {
-
     public static void main(String[] args) {
+        SpringApplication.run(KodillaGoodPatternsApplication.class, args);
+
+        SearcherFlightFrom searcherFlightFrom = new SearcherFlightFrom("Warszawa");
+        searcherFlightFrom.searchFlight(new FlightList());
+        System.out.println("");
+
+        SearcherFlightTo searcherFlightTo = new SearcherFlightTo("Gdańsk");
+        searcherFlightTo.searchFlight(new FlightList());
+        System.out.println("");
+
+        SearcherFlightThrough searcherFlightThrough = new SearcherFlightThrough(
+                new SearcherFlightFrom("Kraków"),new SearcherFlightTo("Szczecin"));
+        searcherFlightThrough.searchFlight(new FlightList());
+    }
+}
+
+/*
+13.4
+public static void main(String[] args) {
         SpringApplication.run(KodillaGoodPatternsApplication.class, args);
 
         ExtraFoodShop extraFoodShop = new ExtraFoodShop(new FoodInformationService());
@@ -25,11 +45,11 @@ public class KodillaGoodPatternsApplication {
         healthyShop.processOrder();
         System.out.println("");
         glutenFreeShop.processOrder();
-    }
+    }*/
 
-}
-
-/*public class KodillaGoodPatternsApplication {
+/*
+13.2
+public class KodillaGoodPatternsApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(KodillaGoodPatternsApplication.class, args);
@@ -46,7 +66,9 @@ public class KodillaGoodPatternsApplication {
 }*/
 
 
-    /*MovieStore movieStore = new MovieStore();
+    /*
+    13.1
+    MovieStore movieStore = new MovieStore();
 
     String listofMap = movieStore.getMovies().entrySet().stream()
             .flatMap(stringListEntry -> stringListEntry.getValue().stream())
