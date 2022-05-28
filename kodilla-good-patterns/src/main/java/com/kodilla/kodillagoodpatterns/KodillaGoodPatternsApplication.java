@@ -26,7 +26,7 @@ public class KodillaGoodPatternsApplication {
         System.out.println("");
 
         SearcherFlightThrough searcherFlightThrough = new SearcherFlightThrough(
-                new SearcherFlightFrom("Kraków"),new SearcherFlightTo("Szczecin"));
+                new SearcherFlightFrom("Warszawa"),new SearcherFlightTo("Gdańsk"));
         searcherFlightThrough.searchFlight(new FlightList());
     }
 }

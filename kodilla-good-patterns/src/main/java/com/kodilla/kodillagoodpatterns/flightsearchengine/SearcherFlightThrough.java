@@ -1,6 +1,8 @@
 package com.kodilla.kodillagoodpatterns.flightsearchengine;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class SearcherFlightThrough implements Searcher {
@@ -16,12 +18,22 @@ public class SearcherFlightThrough implements Searcher {
     }
 
     public void searchFlight(FlightList flightList) {
+        Set<Flight> specialFlightList = new HashSet<>();
+        String flightFrom = "";
+        String flightTo = "";
 
-        flightList.getFlightList().stream()
-                .filter(flight -> flight.getFlightFrom().equals(searcherFlightFrom.getDesiredFlightFrom())
-                        || flight.getFlightTo().equals(searcherFlightTo.getDesiredFlightTo()))
-                .map(flight -> flight.getFlightFrom() + "--->" + flight.getFlightTo())
-                .forEach(System.out::println);
+        for (Flight flight: flightList.getFlightList()) {
+            specialFlightList.add(flight);
+            flightTo = flight.getFlightTo();
+            for (Flight flight1: specialFlightList) {
+                flightFrom = flight1.getFlightFrom();
+                if (flightTo.equals(flightFrom) && flight.getFlightFrom().equals(searcherFlightFrom.getDesiredFlightFrom())
+                && flight1.getFlightTo().equals(searcherFlightTo.getDesiredFlightTo())) {
+                    System.out.println(searcherFlightFrom.getDesiredFlightFrom() + " ---> " + flightTo +
+                            " ---> " + searcherFlightTo.getDesiredFlightTo());
+                }
+            }
+        }
     }
 }
 
