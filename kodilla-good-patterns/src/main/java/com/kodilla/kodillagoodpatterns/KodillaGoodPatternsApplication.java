@@ -19,11 +19,11 @@ public class KodillaGoodPatternsApplication {
 
         SearcherFlightFrom searcherFlightFrom = new SearcherFlightFrom("Warszawa");
         searcherFlightFrom.searchFlight(new FlightList());
-        System.out.println("");
+        System.out.println(" ");
 
         SearcherFlightTo searcherFlightTo = new SearcherFlightTo("Gdańsk");
         searcherFlightTo.searchFlight(new FlightList());
-        System.out.println("");
+        System.out.println(" ");
 
         SearcherFlightThrough searcherFlightThrough = new SearcherFlightThrough(
                 new SearcherFlightFrom("Warszawa"),new SearcherFlightTo("Gdańsk"));
