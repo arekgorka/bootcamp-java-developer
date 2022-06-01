@@ -17,10 +17,15 @@ public class CalculatorTestSuite {
         double a = 9;
         double b = 7;
         //When
-        calculator.add(a,b);
-        calculator.sub(a,b);
-        calculator.mul(a,b);
-        calculator.div(a,b);
+        double result1 = calculator.add(a,b);
+        double result2 = calculator.sub(a,b);
+        double result3 = calculator.mul(a,b);
+        double result4 = calculator.div(a,b);
         //Then
+        assertEquals(16.0,result1);
+        assertEquals(2.0,result2);
+        assertEquals(63.0,result3);
+        assertEquals(1.2857142857142858,result4);
+
     }
 }
