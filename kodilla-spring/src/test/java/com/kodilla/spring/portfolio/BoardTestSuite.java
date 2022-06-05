@@ -17,14 +17,23 @@ public class BoardTestSuite {
         board.getInProgressList().getTasks().add("-Zrobić pranie");
         board.getDoneList().getTasks().add("-Umyć okna");
 
-        //When & Then
         System.out.println("To Do List:");
+        board.getToDoList().getTasks().forEach(System.out::println);
+        System.out.println(" ");
+        System.out.println("In Progress List:");
+        board.getInProgressList().getTasks().forEach(System.out::println);
+        System.out.println(" ");
+        System.out.println("Done List:");
+        board.getDoneList().getTasks().forEach(System.out::println);
+
+        //When & Then
+        /*System.out.println("To Do List:");
         board.getToDoList().getTasks().stream().forEach(System.out::println);
         System.out.println(" ");
         System.out.println("In Progress List:");
         board.getInProgressList().getTasks().stream().forEach(System.out::println);
         System.out.println(" ");
         System.out.println("Done List:");
-        board.getDoneList().getTasks().stream().forEach(System.out::println);
+        board.getDoneList().getTasks().stream().forEach(System.out::println);*/
     }
 }
