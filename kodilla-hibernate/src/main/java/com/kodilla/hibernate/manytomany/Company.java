@@ -10,6 +10,11 @@ import java.util.List;
         query = "SELECT * FROM COMPANIES WHERE SUBSTRING(COMPANY_NAME,1,3) = :3SIGNS",
         resultClass = Company.class
 )
+@NamedNativeQuery(
+        name = "Company.findCompanyByString",
+        query = "SELECT * FROM COMPANIES WHERE COMPANY_NAME like '%ace%'",
+        resultClass = Company.class
+)
 @Entity
 @Table(name = "COMPANIES")
 public class Company {
