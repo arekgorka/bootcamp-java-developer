@@ -28,7 +28,7 @@ public class SearcherFacadeTest {
         companyDao.save(new Company("SpaceCraft"));
         companyDao.save(new Company("Microsoft"));
         companyDao.save(new Company("Best software"));
-        searcherFacade.findCompany("ace");
+        searcherFacade.findCompany("%ace%");
 
         companyDao.deleteAll();
     }
@@ -40,7 +40,7 @@ public class SearcherFacadeTest {
         employeeDao.save(new Employee("Meredith","Black"));
         employeeDao.save(new Employee("Jesus", "Navas"));
         employeeDao.save(new Employee("Naomi", "Thriss"));
-        searcherFacade.findEmployee("ith");
+        searcherFacade.findEmployee("%ith%");
 
         employeeDao.deleteAll();
     }

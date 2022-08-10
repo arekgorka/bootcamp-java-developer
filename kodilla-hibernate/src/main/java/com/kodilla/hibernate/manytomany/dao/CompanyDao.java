@@ -18,6 +18,6 @@ public interface CompanyDao extends CrudRepository<Company, Integer> {
     List<Company> retrieveCompanyWith3FirstSings(@Param("3SIGNS") String firstThreeSignsOfCompanyName);
 
     @Query(nativeQuery = true)
-    List<Company> findCompanyByString(@Param("%ace%") String nameCompany);
+    List<Company> findCompanyByString(@Param("ARG") String name);
 
 }

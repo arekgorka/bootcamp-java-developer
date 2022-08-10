@@ -12,7 +12,7 @@ import java.util.List;
 )
 @NamedNativeQuery(
         name = "Employee.findEmployeeByString",
-        query = "SELECT * FROM EMPLOYEES WHERE LASTNAME like '%ith%'",
+        query = "SELECT * FROM EMPLOYEES WHERE FIRSTNAME like :ARG or LASTNAME like :ARG",
         resultClass = Employee.class
 )
 @Entity

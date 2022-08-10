@@ -41,9 +41,9 @@ public class SearcherFacade {
         LOGGER.info("Searching is finished.");
     }
 
-    public void findEmployee(String lastname) {
-        LOGGER.info("Start searching for employee: " + lastname);
-        List<Employee> employeeList = employeeDao.findEmployeeByString(lastname);
+    public void findEmployee(String name) {
+        LOGGER.info("Start searching for employee: " + name);
+        List<Employee> employeeList = employeeDao.findEmployeeByString(name);
 
         if (employeeList.isEmpty()) {
             LOGGER.info("0 employees were found...");
