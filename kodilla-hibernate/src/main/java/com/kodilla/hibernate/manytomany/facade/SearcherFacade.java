@@ -27,7 +27,7 @@ public class SearcherFacade {
     }
 
 
-    public void findCompany(String companyName) {
+    public List<Company> findCompany(String companyName) {
         LOGGER.info("Start searching for company: " + companyName);
         List<Company> companyList = companyDao.findCompanyByString(companyName);
         if (companyList.isEmpty()) {
@@ -39,9 +39,10 @@ public class SearcherFacade {
             }
         }
         LOGGER.info("Searching is finished.");
+        return companyList;
     }
 
-    public void findEmployee(String name) {
+    public List<Employee> findEmployee(String name) {
         LOGGER.info("Start searching for employee: " + name);
         List<Employee> employeeList = employeeDao.findEmployeeByString(name);
 
@@ -54,5 +55,6 @@ public class SearcherFacade {
             }
         }
         LOGGER.info("Searching is finished.");
+        return employeeList;
     }
 }
