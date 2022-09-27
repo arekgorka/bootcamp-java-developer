@@ -5,29 +5,27 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
-public enum DbManager {
+public class DbManager {
 
-    INSTANCE;                                                  // [1]
+    private Connection conn;
+    private static DbManager dbManagerInstance;
 
-    private Connection conn;                                   // [2]
-
-    DbManager() {                                              // [3]
+   private DbManager() throws SQLException {                                              // [3]
         Properties connectionProps = new Properties();          // [4]
         connectionProps.put("user", "kodilla_user");            // [5]
-        connectionProps.put("password", "kodilla_Pass123");     // [6]
-        try {
+        connectionProps.put("password", "kodilla_password");     // [6]
             conn = DriverManager.getConnection(                  // [7]
                     "jdbc:mysql://localhost:3306/kodilla_course" +
                             "?serverTimezone=Europe/Warsaw" +
-                            "&useSSL=False",                                  // [10]
-                    connectionProps);                                 // [11]
-        } catch (SQLException e) {                              // [12]
-            throw new ExceptionInInitializerError(e);            // [13]
-        }                                                       // [14]
+                            "&useSSL=False",
+                    connectionProps);
     }                                                          // [15]
 
-    public static DbManager getInstance() {                    // [16]
-        return INSTANCE;                                        // [17]
+    public static DbManager getInstance() throws SQLException {
+       if (dbManagerInstance == null) {
+           dbManagerInstance = new DbManager();
+       }
+        return dbManagerInstance;                 // [17]
     }                                                          // [18]
 
     public Connection getConnection() {                        // [19]
